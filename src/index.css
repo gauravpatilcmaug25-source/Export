@@ -21,6 +21,9 @@
   body {
     @apply text-slate-800 bg-gray-50;
   }
+
+  /* Ensure fonts swap */
+  /* Font loading handled via Google Fonts link in index.html */
 }
 
 /* Animations */
@@ -38,35 +41,6 @@
 
 .animate-fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
-}
-
-/* Marquee Animation */
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-@keyframes marquee2 {
-  0% {
-    transform: translateX(100%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
-
-.animate-marquee {
-  animation: marquee 25s linear infinite;
-}
-
-.animate-marquee2 {
-  animation: marquee2 25s linear infinite;
 }
 
 /* Hide Scrollbar util */
