@@ -1,16 +1,54 @@
-# React + Vite
+# VR AGRICO - Project Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Project Overview
+VR AGRICO is a modern, responsive web application designed for a leading Indian agricultural exporter. The website showcases premium products like vegetables, fruits, spices, pulses, and cereals to a global audience. It features a dynamic product catalog, professional company information, and an optimized user experience for international buyers.
 
-Currently, two official plugins are available:
+## How to Update Products
+To add new products or modify existing ones, you only need to edit one file:
+**File:** `src/data/products.js`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Open the file `src/data/products.js`.
+2. Locate the category you want to edit (e.g., `vegetables`, `fruits`).
+3. To **add a product**, add a new object to the `products` array:
+   ```javascript
+   { name: "Product Name", image: "/assets/products/category/your_image.webp" }
+   ```
+4. To **edit a product**, simply change the `name` or `image` path of an existing entry.
 
-## React Compiler
+## How to Change Images
+All product images are stored locally to ensure fast loading and reliability.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. **Prepare your image**:
+   - Save your image in **WebP** format for best performance.
+   - Name it clearly (e.g., `garlic.webp`, `onion.webp`).
 
-## Expanding the ESLint configuration
+2. **Save the image**:
+   - Place the image in the correct folder under `public/assets/products/`.
+   - Example: New fruit images go in `public/assets/products/fruits/`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. **Link references**:
+   - Update `src/data/products.js` to point to your new image:
+     ```javascript
+     image: "/assets/products/fruits/new-fruit.webp"
+     ```
+
+**Note**: Avoid using external links (http://...) as they may break or slow down the site. Always download and save images locally.
+
+## Deployment
+This project is set up for automatic deployment via Vercel (or similar platforms connected to GitHub).
+
+1. **Save your changes**:
+   - git add .
+   - git commit -m "Updated products"
+
+2. **Push to GitHub**:
+   - git push origin main
+
+3. **Automatic Update**:
+   - Vercel will detect the new commit and automatically build and deploy the updated website.
+
+## Developer Notes
+- **React Framework**: Built with Vite + React.
+- **Styling**: TailwindCSS for modern, responsive design.
+- **Icons**: Lucide-React.
+- **Performance**: Optimized with local assets and code splitting.

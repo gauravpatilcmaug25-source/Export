@@ -1,74 +1,108 @@
-export const products = [
-    {
-        id: 1,
-        title: "Construction",
-        image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&q=80&w=800",
-        description: "Heavy machinery and building materials for large-scale projects."
-    },
-    {
-        id: 2,
-        title: "Medical",
-        image: "https://images.unsplash.com/photo-1583912267850-663f9492af70?auto=format&fit=crop&q=80&w=800", // Medical supplies
-        description: "Advanced medical equipment and healthcare supplies."
-    },
-    {
-        id: 3,
-        title: "Chemical",
-        image: "https://images.unsplash.com/photo-1628519597405-72847a9cb34b?auto=format&fit=crop&q=80&w=800", // Lab/Chemicals
-        description: "Industrial chemicals and pharmaceutical intermediates."
-    },
-    {
-        id: 4,
-        title: "Food & Beverage",
-        image: "https://images.unsplash.com/photo-1606850780554-b55eaac846e0?auto=format&fit=crop&q=80&w=800", // Spices/Food
-        description: "Global trade of organic and processed food products."
-    },
-    {
-        id: 5,
-        title: "Automotive",
-        image: "https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&q=80&w=800", // Auto parts
-        description: "Parts, components, and vehicle manufacturing solutions."
-    },
-    {
-        id: 6,
-        title: "Electronics",
-        image: "https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&q=80&w=800", // Electronics/Chips
-        description: "Consumer electronics and industrial circuit components."
-    },
-    {
-        id: 7,
-        title: "Machinery",
-        image: "https://images.unsplash.com/photo-1565514020125-9a43a0e671b1?auto=format&fit=crop&q=80&w=800", // Industrial gears
-        description: "Industrial automation and manufacturing equipment."
-    },
-    {
-        id: 8,
-        title: "Textiles",
-        image: "https://images.unsplash.com/photo-1621257467614-2cda8b23f819?auto=format&fit=crop&q=80&w=800", // Fabrics
-        description: "Fabrics, yarns, and apparel for detailed manufacturing."
-    },
-    {
-        id: 9,
-        title: "Energy",
-        image: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=800", // Solar/Energy
-        description: "Renewable energy solutions and power generation."
-    },
-    {
-        id: 10,
-        title: "Logistics",
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800", // Container ship
-        description: "Freight forwarding and supply chain management services."
-    },
-    {
-        id: 11,
-        title: "Raw Materials",
-        image: "https://images.unsplash.com/photo-1518779904226-f7831d683692?auto=format&fit=crop&q=80&w=800", // Raw Metal/Ore
-        description: "Essential ores, metals, and minerals for industry."
-    },
-    {
-        id: 12,
-        title: "Agriculture",
-        image: "https://images.unsplash.com/photo-1625246333195-58197bd47fd5?auto=format&fit=crop&q=80&w=800", // Farming
-        description: "Farming equipment and sustainable agricultural tech."
-    }
-];
+
+export const productData = {
+  vegetables: {
+    title: "Fresh Vegetables",
+    banner: "/assets/products/vegetables/banner.webp",
+    products: [
+      { name: "Potato", image: "/assets/products/vegetables/potato.webp", isFeatured: false },
+      { name: "Yam (Suran)", image: "/assets/products/vegetables/yam.webp", isFeatured: true },
+      { name: "Onion", image: "/assets/products/vegetables/onion.webp", isFeatured: true },
+      { name: "Drumstick", image: "/assets/products/vegetables/drumstick.webp", isFeatured: true },
+      { name: "Green Pea", image: "/assets/products/vegetables/greenpea.webp", isFeatured: false },
+      { name: "Green Chilli", image: "/assets/products/vegetables/greenchilly.webp", isFeatured: true }
+    ]
+  },
+  fruits: {
+    title: "Premium Fruits",
+    banner: "/assets/products/fruits/banner.webp",
+    products: [
+      { name: "Grapes", image: "/assets/products/fruits/grapes.webp", isFeatured: false },
+      { name: "Guava", image: "/assets/products/fruits/guava.webp", isFeatured: false },
+      { name: "Banana", image: "/assets/products/fruits/banana.webp", isFeatured: true },
+      { name: "Lemon", image: "/assets/products/fruits/lemon.webp", isFeatured: false },
+      { name: "Pomegranate", image: "/assets/products/fruits/pomogranate.webp", isFeatured: false }
+    ]
+  },
+  spices: {
+    title: "Authentic Spices",
+    banner: "/assets/products/spices/banner.webp",
+    products: [
+      { name: "Garlic", image: "/assets/products/spices/garlic.webp", isFeatured: true },
+      { name: "Cumin", image: "/assets/products/spices/cumin.webp", isFeatured: false },
+      { name: "Ginger", image: "/assets/products/spices/ginger.webp", isFeatured: false },
+      { name: "Turmeric", image: "/assets/products/spices/turmeric.webp", isFeatured: false },
+      { name: "Chilli", image: "/assets/products/spices/chilli.webp", isFeatured: false },
+      { name: "Black Pepper (Mire)", image: "/assets/products/spices/black_pepper.webp", isFeatured: false },
+      { name: "Cinnamon", image: "/assets/products/spices/cinnamon.webp", isFeatured: false }
+    ]
+  },
+  cereals: {
+    title: "Wholesome Cereals",
+    banner: "/assets/products/cereals/banner.webp",
+    products: [
+      { name: "Rice", image: "/assets/products/cereals/rice.webp", isFeatured: false },
+      { name: "Wheat", image: "/assets/products/cereals/wheat.webp", isFeatured: false },
+      { name: "Corn", image: "/assets/products/cereals/corn.webp", isFeatured: true },
+      { name: "Sorghum", image: "/assets/products/cereals/jwari.webp", isFeatured: false },
+      { name: "Pearl Millet", image: "/assets/products/cereals/bajra.webp", isFeatured: false }
+    ]
+  },
+  pulses: {
+    title: "Nutritious Pulses",
+    banner: "/assets/products/pulses/banner.webp",
+    products: [
+      { name: "Green Gram", image: "/assets/products/pulses/greengram.webp", isFeatured: false },
+      { name: "Chickpea", image: "/assets/products/pulses/chickpe.webp", isFeatured: false },
+      { name: "Dry Pea", image: "/assets/products/pulses/drypea.webp", isFeatured: false },
+      { name: "Pigeon Pea", image: "/assets/products/pulses/pigeonpea.webp", isFeatured: false },
+      { name: "Soybean", image: "/assets/products/pulses/soyabean.webp", isFeatured: false },
+      { name: "Lentil", image: "/assets/products/pulses/lentil.webp", isFeatured: false }
+    ]
+  },
+  iqf: {
+    title: "IQF Fruits & Vegetables",
+    banner: "/assets/products/iqf/banner.webp",
+    products: [
+      { name: "Green Pea", image: "/assets/products/iqf/greenpea.webp", isFeatured: false },
+      { name: "Sweet Corn", image: "/assets/products/iqf/sweetcorn.webp", isFeatured: false }
+    ]
+  },
+  animalFeed: {
+    title: "Animal Feed",
+    banner: "/assets/products/animal_feed/banner.webp",
+    products: [
+      { name: "Groundnut Cake", image: "/assets/products/animal_feed/groundnutcake.webp", isFeatured: false },
+      { name: "Soybean Meal", image: "/assets/products/animal_feed/soybeanmeal.webp", isFeatured: false },
+      { name: "Dehusked Soybean", image: "/assets/products/animal_feed/dehuskedsoyabean.webp", isFeatured: false },
+      { name: "Distillers Dried Grains with Solubles (DDGS)", image: "/assets/products/animal_feed/ddgs.webp", isFeatured: true }
+    ]
+  },
+  organicFertilizer: {
+    title: "Organic Fertilizer",
+    banner: "/assets/products/organic_fertilizer/banner.webp",
+    products: [
+      { name: "Cow Dung Compost", image: "/assets/products/organic_fertilizer/cowdungcompost.webp", isFeatured: false },
+      { name: "Organic Manure", image: "/assets/products/organic_fertilizer/organicmanure.webp", isFeatured: true }
+    ]
+  },
+  flowers: {
+    title: "Fresh Flowers",
+    banner: "/assets/products/flowers/banner.webp",
+    products: [
+      { name: "Roses", image: "/assets/products/flowers/roses.webp", isFeatured: true },
+      { name: "Jasmine", image: "/assets/products/flowers/jasmine.webp", isFeatured: false },
+      { name: "Marigold", image: "/assets/products/flowers/marigold.webp", isFeatured: false },
+      { name: "Lilies", image: "/assets/products/flowers/lilies.webp", isFeatured: false },
+      { name: "Gerberas", image: "/assets/products/flowers/gerberas.webp", isFeatured: false },
+      { name: "Orchids", image: "/assets/products/flowers/orchids.webp", isFeatured: true }
+    ]
+  },
+  dairyProducts: {
+    title: "Dairy Products",
+    banner: "/assets/products/dairy/banner.webp",
+    isDropdownOnly: true,
+    products: [
+      { name: "Sugarcane", image: "/assets/products/dairy/sugarcane.webp", isFeatured: true }
+    ]
+  }
+};

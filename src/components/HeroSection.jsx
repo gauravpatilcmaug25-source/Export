@@ -11,6 +11,7 @@ export default function HeroSection() {
                 <img
                     src="/hero-ship.png"
                     alt="Global Trade Logistics"
+                    loading="lazy"
                     className="w-full h-full object-cover transform lg:scale-105 transition-transform duration-[2s]"
                 />
                 {/* Mobile fade gradient for smooth text transition */}

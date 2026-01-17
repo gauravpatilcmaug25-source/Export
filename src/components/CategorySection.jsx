@@ -5,7 +5,7 @@ import { ArrowUpRight } from 'lucide-react';
 export default function CategorySection() {
     return (
         <section id="products" className="py-24 bg-slate-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-7xl mx-auto px-4">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-sm font-bold text-primary tracking-widest uppercase mb-3">Our Sectors</h2>
                     <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
@@ -26,6 +26,7 @@ export default function CategorySection() {
                                 <img
                                     src={product.image}
                                     alt={product.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60 group-hover:opacity-40 transition-opacity"></div>

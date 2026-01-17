@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Globe } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Menu, X, ChevronDown, Leaf } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [productDropdownOpen, setProductDropdownOpen] = useState(false);
+    const [mobileProductDropdownOpen, setMobileProductDropdownOpen] = useState(false);
     const location = useLocation();
     const isHome = location.pathname === '/';
 
@@ -17,78 +19,122 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Updated logic: Always dark text on white background if scrolled or NOT home.
-    // If Home AND top: White text with text-shadow for readability.
+    // Close mobile menu on route change
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location.pathname]);
+
     const isTransparent = isHome && !scrolled;
 
     const navbarClasses = `fixed w-full z-50 transition-all duration-300 ${isTransparent
-        ? 'bg-gradient-to-b from-black/60 to-transparent py-6'
+        ? 'bg-gradient-to-b from-black/60 to-transparent py-4'
         : 'bg-white/95 backdrop-blur-md shadow-md border-b border-gray-100 py-3'
         }`;
 
-    const linkClasses = (path) => `px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 tracking-wide ${isTransparent
-        ? isActive(path) ? 'bg-white text-primary' : 'text-white hover:bg-white/20'
-        : isActive(path) ? 'bg-blue-50 text-primary' : 'text-gray-700 hover:text-primary hover:bg-gray-50'
+    const linkClasses = (path) => `px-4 py-2 rounded-full text-sm font-bold transition-all duration-200 tracking-wide flex items-center gap-1 ${isTransparent
+        ? isActive(path) ? 'bg-white text-green-700' : 'text-white hover:bg-white/20'
+        : isActive(path) ? 'bg-green-50 text-green-700' : 'text-gray-700 hover:text-green-700 hover:bg-green-50'
         }`;
 
-    const isActive = (path) => location.pathname === path;
+    const isActive = (path) => location.pathname === path || (path === '/products' && location.pathname.startsWith('/products'));
 
-    // Logo colors
-    const logoTextMain = isTransparent ? 'text-white' : 'text-primary';
-    const logoTextSub = isTransparent ? 'text-blue-300' : 'text-secondary';
-    const logoBg = isTransparent ? 'bg-white/10 backdrop-blur-sm' : 'bg-primary';
-    const logoIcon = isTransparent ? 'text-white' : 'text-white';
-    const buttonClass = isTransparent
-        ? 'bg-white text-primary hover:bg-blue-50'
-        : 'bg-primary text-white hover:bg-blue-800 shadow-blue-900/20';
+    const logoTextMain = isTransparent ? 'text-white' : 'text-green-700';
+    const logoTextSub = isTransparent ? 'text-green-300' : 'text-green-500';
+    const logoBg = isTransparent ? 'bg-white/10 backdrop-blur-sm' : 'bg-green-50';
+    const logoIcon = isTransparent ? 'text-white' : 'text-green-600';
+
+    const products = [
+        { name: 'Vegetables', path: '/products/vegetables' },
+        { name: 'Fruits', path: '/products/fruits' },
+        { name: 'Spices', path: '/products/spices' },
+        { name: 'Cereals', path: '/products/cereals' },
+        { name: 'Pulses', path: '/products/pulses' },
+        { name: 'IQF', path: '/products/iqf' },
+        { name: 'Animal Feed', path: '/products/animalFeed' },
+        { name: 'Organic Fertilizer', path: '/products/organicFertilizer' },
+        { name: 'Flowers', path: '/products/flowers' },
+        { name: 'Dairy Products', path: '/products/dairyProducts' },
+    ];
+
+    const closeTimeoutRef = useRef(null);
 
     const menuItems = [
         { name: 'Home', path: '/' },
-        { name: 'Products', path: '/products' },
-        { name: 'Services', path: '/services' },
+        // Products is handled separately
         { name: 'About Us', path: '/about' },
-        { name: 'Blog', path: '/blog' },
         { name: 'Contact', path: '/contact' },
     ];
 
     return (
         <nav className={navbarClasses}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-12">
+                <div className="flex justify-between items-center h-16">
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-2 group">
                         <div className={`p-2 rounded-xl transition-colors ${logoBg}`}>
-                            <Globe className={`w-6 h-6 ${logoIcon}`} />
+                            <Leaf className={`w-6 h-6 ${logoIcon}`} />
                         </div>
-                        <span className={`text-2xl font-extrabold tracking-tight ${logoTextMain} drop-shadow-sm`}>
-                            Global<span className={logoTextSub}>Trade</span>
+                        <span className={`text-2xl font-extrabold tracking-tight ${logoTextMain} drop-shadow-sm uppercase`}>
+                            VR<span className={logoTextSub}>AGRICO</span>
                         </span>
                     </Link>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden lg:flex items-center gap-8">
-                        <div className="flex gap-1">
-                            {menuItems.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    to={item.path}
-                                    className={linkClasses(item.path)}
-                                    style={isTransparent ? { textShadow: '0 2px 4px rgba(0,0,0,0.3)' } : {}}
-                                >
-                                    {item.name}
-                                </Link>
-                            ))}
-                        </div>
-                        <Link to="/quote">
-                            <button className={`px-6 py-2.5 rounded-full font-bold transition-all shadow-lg active:scale-95 ${buttonClass}`}>
-                                Get a Quote
+                    <div className="hidden lg:flex items-center gap-4">
+                        <Link to="/" className={linkClasses('/')}>Home</Link>
+
+                        {/* Products Dropdown */}
+                        <div
+                            className="relative group"
+                            onMouseEnter={() => {
+                                if (closeTimeoutRef.current) {
+                                    clearTimeout(closeTimeoutRef.current);
+                                    closeTimeoutRef.current = null;
+                                }
+                                setProductDropdownOpen(true);
+                            }}
+                            onMouseLeave={() => {
+                                // small delay to allow pointer to move into dropdown
+                                closeTimeoutRef.current = setTimeout(() => setProductDropdownOpen(false), 150);
+                            }}
+                        >
+                            <button
+                                className={linkClasses('/products')}
+                            >
+                                Products <ChevronDown size={14} />
                             </button>
-                        </Link>
+                            <div
+                                onMouseEnter={() => {
+                                    if (closeTimeoutRef.current) {
+                                        clearTimeout(closeTimeoutRef.current);
+                                        closeTimeoutRef.current = null;
+                                    }
+                                    setProductDropdownOpen(true);
+                                }}
+                                onMouseLeave={() => {
+                                    closeTimeoutRef.current = setTimeout(() => setProductDropdownOpen(false), 150);
+                                }}
+                                className={`absolute top-full left-0 w-56 bg-white rounded-xl shadow-xl py-2 transition-all duration-200 transform origin-top-left border border-gray-100 ${productDropdownOpen ? 'opacity-100 scale-100 visible' : 'opacity-0 scale-95 invisible pointer-events-none'}`}
+                            >
+                                {products.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        to={item.path}
+                                        className="block px-4 py-3 text-gray-700 hover:bg-green-50 hover:text-green-700 font-medium text-sm transition-colors"
+                                    >
+                                        {item.name}
+                                    </Link>
+                                ))}
+                            </div>
+                        </div>
+
+                        <Link to="/about" className={linkClasses('/about')}>About Us</Link>
+                        <Link to="/contact" className={linkClasses('/contact')}>Contact</Link>
                     </div>
 
-                    {/* Mobile Menu Button */}
+                    {/* Mobile Menu Button - Always visible on mobile */}
                     <button
-                        className={`lg:hidden p-2 transition-colors focus:outline-none ${isTransparent ? 'text-white' : 'text-gray-600'}`}
+                        className={`lg:hidden p-2 transition-colors focus:outline-none z-50 relative ${isTransparent ? 'text-white' : 'text-gray-600'}`}
                         onClick={() => setIsOpen(!isOpen)}
                         aria-label="Toggle menu"
                     >
@@ -98,44 +144,78 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Menu Overlay */}
-            <div
-                className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 lg:hidden ${isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
-                    }`}
-                onClick={() => setIsOpen(false)}
-            />
+            {isOpen && (
+                <div
+                    className="fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 lg:hidden"
+                    onClick={() => setIsOpen(false)}
+                />
+            )}
 
-            <div
-                className={`fixed top-0 right-0 h-full w-[300px] bg-white z-50 shadow-2xl transform transition-transform duration-300 ease-in-out lg:hidden ${isOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
-            >
-                <div className="p-6 flex flex-col h-full">
-                    <div className="flex justify-between items-center mb-8">
-                        <span className="text-xl font-bold text-primary">Menu</span>
-                        <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-red-500" aria-label="Close menu">
-                            <X size={24} />
-                        </button>
-                    </div>
-
-                    <div className="flex flex-col gap-2">
-                        {menuItems.map((item) => (
-                            <Link
-                                key={item.name}
-                                to={item.path}
-                                className="flex items-center gap-3 px-4 py-3 rounded-xl text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-primary transition-colors"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                {item.name}
-                            </Link>
-                        ))}
-                        <div className="my-4 border-t border-gray-100" />
-                        <Link to="/quote" onClick={() => setIsOpen(false)}>
-                            <button className="w-full bg-primary text-white py-3 rounded-xl font-bold shadow-md active:scale-95">
-                                Get a Quote
+            {/* Mobile Menu Panel - Enhanced visibility with glassmorphism effect */}
+            {isOpen && (
+                <div
+                    className="fixed top-20 right-0 h-screen w-[85vw] sm:w-80 bg-slate-900/95 backdrop-blur-lg z-50 shadow-2xl overflow-y-auto animate-in slide-in-from-right-full duration-300 border-l border-slate-700"
+                >
+                    <div className="p-4 flex flex-col min-h-full">
+                        <div className="flex justify-between items-center mb-6">
+                            <span className="text-lg font-bold text-white">Menu</span>
+                            <button onClick={() => setIsOpen(false)} className="text-white hover:text-slate-200 transition-colors" aria-label="Close menu">
+                                <X size={24} />
                             </button>
-                        </Link>
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+                            <Link to="/" onClick={() => setIsOpen(false)} className="px-4 py-2.5 rounded-lg text-base font-semibold text-white hover:bg-white/30 transition-colors">
+                                Home
+                            </Link>
+
+                            {/* Mobile Products Dropdown - Clickable, closed by default */}
+                            <div className="px-4">
+                                <button
+                                    onClick={() => setMobileProductDropdownOpen(!mobileProductDropdownOpen)}
+                                    className="w-full flex items-center justify-between py-2.5 rounded-lg text-base font-semibold text-white hover:bg-white/30 transition-colors"
+                                >
+                                    <span>Products</span>
+                                    <ChevronDown
+                                        size={18}
+                                        className={`transition-transform duration-300 ${mobileProductDropdownOpen ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+
+                                {/* Products Submenu - Collapse/Expand Animation */}
+                                <div
+                                    className={`overflow-hidden transition-all duration-300 ease-in-out ${mobileProductDropdownOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+                                        }`}
+                                >
+                                    <div className="flex flex-col mt-1 pl-3 border-l-3 border-green-400 ml-2 space-y-1 py-2">
+                                        {products.map((item) => (
+                                            <Link
+                                                key={item.name}
+                                                to={item.path}
+                                                onClick={() => {
+                                                    setIsOpen(false);
+                                                    setMobileProductDropdownOpen(false);
+                                                }}
+                                                className="py-1.5 px-3 text-white hover:text-slate-200 hover:bg-white/30 rounded-md font-medium text-sm transition-colors"
+                                            >
+                                                {item.name}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Link to="/about" onClick={() => setIsOpen(false)} className="px-4 py-2.5 rounded-lg text-base font-semibold text-white hover:bg-white/30 transition-colors">
+                                About Us
+                            </Link>
+
+                            <Link to="/contact" onClick={() => setIsOpen(false)} className="px-4 py-2.5 rounded-lg text-base font-semibold text-white hover:bg-white/30 transition-colors">
+                                Contact
+                            </Link>
+                        </div>
                     </div>
                 </div>
-            </div>
+            )}
         </nav>
     );
 }

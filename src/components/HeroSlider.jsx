@@ -5,26 +5,38 @@ import { Link } from 'react-router-dom';
 const slides = [
     {
         id: 1,
-        image: "/hero-ship.webp",
-        title: "Premium Indian Agriculture",
-        subtitle: "Exporting nature's finest from India's heartlands to the world.",
-        cta: "Explore Products"
+        image: "/assets/products/vegetables/banner.webp",
+        title: "Serving India's Finest Produce Globally",
+        subtitle: "Fresh Vegetables sourced directly from Indian farms.",
+        cta: "Explore Vegetables",
+        link: "/products/vegetables"
     },
     {
         id: 2,
-        image: "/slider1.webp",
-        title: "Global Logistics Network",
-        subtitle: "Seamless import-export solutions connecting continents.",
-        cta: "Our Services"
+        image: "/assets/products/fruits/banner.webp",
+        title: "Premium Quality, Global Standards",
+        subtitle: "Exporting the sweetest and juiciest fruits worldwide.",
+        cta: "Discover Fruits",
+        link: "/products/fruits"
     },
     {
         id: 3,
-        image: "/image.webp", // Container Ship
-        title: "Reliable Freight Forwarding",
-        subtitle: "Secure, timely, and compliant delivery of your goods.",
-        cta: "Get a Quote"
+        image: "/assets/products/spices/banner.webp",
+        title: "Authentic Indian Spices",
+        subtitle: "The aroma and taste of India, delivered to your doorstep.",
+        cta: "View Spices",
+        link: "/products/spices"
+    },
+    {
+        id: 4,
+        image: "/assets/products/pulses/banner.webp",
+        title: "Nutritious Pulses & Grains",
+        subtitle: "High-quality pulses and cereals for a healthy world.",
+        cta: "See Pulses",
+        link: "/products/pulses"
     }
 ];
+
 
 export default function HeroSlider() {
     const [current, setCurrent] = useState(0);
@@ -32,7 +44,7 @@ export default function HeroSlider() {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrent((prev) => (prev + 1) % slides.length);
-        }, 6000);
+        }, 2000);
         return () => clearInterval(timer);
     }, []);
 
@@ -48,23 +60,23 @@ export default function HeroSlider() {
                         }`}
                 >
                     {/* Image Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-10" />
 
                     <img
                         src={slide.image}
                         alt={slide.title}
-                        fetchpriority="high"
-                        decoding="async"
+                        loading={index === 0 ? "eager" : "lazy"}
+                        fetchpriority={index === 0 ? "high" : "auto"}
                         className="w-full h-full object-cover transform scale-105 transition-transform duration-[10s]"
                     />
 
                     {/* Content */}
                     <div className="absolute inset-0 flex items-center z-20">
-                        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                        <div className="max-w-7xl mx-auto px-4 w-full">
                             <div className={`max-w-3xl transition-all duration-1000 transform ${index === current ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
                                 }`}>
-                                <div className="inline-block px-4 py-1 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-medium mb-6">
-                                    Global Trade & Logistics
+                                <div className="inline-block px-4 py-1 border border-white/30 rounded-full bg-white/10 backdrop-blur-sm text-green-400 text-sm font-medium mb-6 uppercase tracking-wider">
+                                    VR AGRICO Exports
                                 </div>
                                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
                                     {slide.title}
@@ -73,8 +85,8 @@ export default function HeroSlider() {
                                     {slide.subtitle}
                                 </p>
                                 <div className="flex gap-4">
-                                    <Link to="/products">
-                                        <button className="bg-primary hover:bg-white hover:text-primary text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg shadow-blue-900/50 flex items-center gap-2">
+                                    <Link to={slide.link}>
+                                        <button className="bg-green-600 hover:bg-green-700 text-white px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 shadow-lg shadow-green-900/50 flex items-center gap-2">
                                             {slide.cta} <ArrowRight size={20} />
                                         </button>
                                     </Link>
@@ -88,13 +100,13 @@ export default function HeroSlider() {
             {/* Controls */}
             <button
                 onClick={prevSlide}
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-primary transition-all md:opacity-0 group-hover:opacity-100 border border-white/20"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-green-700 transition-all md:opacity-0 group-hover:opacity-100 border border-white/20"
             >
                 <ChevronLeft size={32} />
             </button>
             <button
                 onClick={nextSlide}
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-primary transition-all md:opacity-0 group-hover:opacity-100 border border-white/20"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-green-700 transition-all md:opacity-0 group-hover:opacity-100 border border-white/20"
             >
                 <ChevronRight size={32} />
             </button>
@@ -105,7 +117,7 @@ export default function HeroSlider() {
                     <button
                         key={idx}
                         onClick={() => setCurrent(idx)}
-                        className={`h-2 rounded-full transition-all duration-300 ${idx === current ? 'bg-primary w-10' : 'bg-white/40 w-2 hover:bg-white'
+                        className={`h-2 rounded-full transition-all duration-300 ${idx === current ? 'bg-green-500 w-10' : 'bg-white/40 w-2 hover:bg-white'
                             }`}
                     />
                 ))}
