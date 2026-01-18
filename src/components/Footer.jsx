@@ -62,9 +62,9 @@ export default function Footer() {
                                 <span>vragrico93@gmail.com</span>
                             </li>
                             <div className="flex gap-4 pt-2">
-                                <a href="#" aria-label="Facebook" className="text-slate-400 hover:text-green-500 transition-colors"><Facebook size={20} /></a>
-                                <a href="#" aria-label="Instagram" className="text-slate-400 hover:text-pink-500 transition-colors"><Instagram size={20} /></a>
-                                <a href="#" aria-label="LinkedIn" className="text-slate-400 hover:text-blue-500 transition-colors"><Linkedin size={20} /></a>
+                                <a href="https://www.facebook.com/share/17o94WJjj6/" aria-label="Facebook" className="text-slate-400 hover:text-green-500 transition-colors"><Facebook size={20} /></a>
+                                <a href="https://www.instagram.com/vr_agrico?igsh=MTZ4MTJkZ21ibGpzNw==" aria-label="Instagram" className="text-slate-400 hover:text-pink-500 transition-colors"><Instagram size={20} /></a>
+                                <a href="https://www.linkedin.com/company/vr-agrico/" aria-label="LinkedIn" className="text-slate-400 hover:text-blue-500 transition-colors"><Linkedin size={20} /></a>
                             </div>
                         </ul>
                     </div>

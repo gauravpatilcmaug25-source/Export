@@ -1,4 +1,3 @@
-
 export const productData = {
   vegetables: {
     title: "Fresh Vegetables",
@@ -20,7 +19,8 @@ export const productData = {
       { name: "Guava", image: "/assets/products/fruits/guava.webp", isFeatured: false },
       { name: "Banana", image: "/assets/products/fruits/banana.webp", isFeatured: true },
       { name: "Lemon", image: "/assets/products/fruits/lemon.webp", isFeatured: false },
-      { name: "Pomegranate", image: "/assets/products/fruits/pomogranate.webp", isFeatured: false }
+      { name: "Pomegranate", image: "/assets/products/fruits/pomogranate.webp", isFeatured: false },
+      { name: "Sugarcane", image: "/assets/products/dairy/sugarcane.webp", isFeatured: true }
     ]
   },
   spices: {
@@ -59,7 +59,7 @@ export const productData = {
       { name: "Lentil", image: "/assets/products/pulses/lentil.webp", isFeatured: false }
     ]
   },
-  iqf: {
+  IQF: {
     title: "IQF Fruits & Vegetables",
     banner: "/assets/products/iqf/banner.webp",
     products: [
@@ -94,15 +94,17 @@ export const productData = {
       { name: "Marigold", image: "/assets/products/flowers/marigold.webp", isFeatured: false },
       { name: "Lilies", image: "/assets/products/flowers/lilies.webp", isFeatured: false },
       { name: "Gerberas", image: "/assets/products/flowers/gerberas.webp", isFeatured: false },
-      { name: "Orchids", image: "/assets/products/flowers/orchids.webp", isFeatured: true }
+      { name: "Orchids", image: "/assets/products/flowers/orchids.webp", isFeatured: false }
     ]
   },
+
+
   dairyProducts: {
     title: "Dairy Products",
     banner: "/assets/products/dairy/banner.webp",
     isDropdownOnly: true,
     products: [
-      { name: "Sugarcane", image: "/assets/products/dairy/sugarcane.webp", isFeatured: true }
+      //{ name: "Sugarcane", image: "/assets/products/dairy/sugarcane.webp", isFeatured: true }
     ]
   }
 };

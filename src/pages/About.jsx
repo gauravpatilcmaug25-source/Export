@@ -32,7 +32,7 @@ export default function About() {
                         <div className="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-2 h-full bg-green-500"></div>
                             <p className="text-slate-700 text-lg leading-relaxed italic">
-                                "To be a globally trusted exporter of indias finest agricultural produce also being a diversified agricultural powerhouse offering fruits, cereals , pulses, spices,and animal feed that meet the evolving needs of international buyers."
+                                "To be recognized worldwide as a trusted exporter of high-quality Indian agricultural produce, delivering a diversified portfolio of fruits, cereals, pulses, spices, and animal feed to global markets."
                             </p>
                         </div>
                     </div>

@@ -114,11 +114,17 @@ const ProductScroller = () => {
                                         <p className="text-xs text-slate-500 mb-4 uppercase tracking-wider font-medium">{product.categoryTitle}</p>
                                     </div>
 
-                                    <Link to={`/products/${product.category}`} className="w-full mt-auto">
+                                    {/* Replace <Link> with <a> for external WhatsApp redirection */}
+                                    <a
+                                        href="https://wa.me/message/BE7TRK66BFMSP1"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="w-full mt-auto"
+                                    >
                                         <button className="w-full text-sm font-bold text-green-600 border border-green-200 px-6 py-2.5 rounded-full hover:bg-green-600 hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group-hover:border-green-600 shadow-sm hover:shadow-md">
-                                            View Details <ArrowRight size={16} />
+                                            Know More <ArrowRight size={16} />
                                         </button>
-                                    </Link>
+                                    </a>
                                 </div>
                             </div>
                         </SwiperSlide>

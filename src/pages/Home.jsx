@@ -15,7 +15,7 @@ export default function Home() {
                     <h2 className="text-sm font-bold text-green-600 tracking-widest uppercase mb-3 animate-fade-in-up">Welcome to VR AGRICO</h2>
                     <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 animate-fade-in-up">Serving India's Finest Produce Globally</h3>
                     <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-16 animate-fade-in-up">
-                        To be a globally trusted exporter of indias finest agricultural produce also being a diversified agricultural powerhouse offering fruits, cereals , pulses, spices,and animal feed that meet the evolving needs of international buyers.
+                        "To be recognized worldwide as a trusted exporter of high-quality Indian agricultural produce, delivering a diversified portfolio of fruits, cereals, pulses, spices, and animal feed to global markets."
                     </p>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="p-8 bg-green-50 rounded-2xl border border-green-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -74,13 +74,12 @@ export default function Home() {
                     </div>
 
                     <div className="flex justify-center gap-8 text-white/70">
-                        <a href="#" className="hover:text-white hover:scale-110 transition-all"><Linkedin size={32} /></a>
-                        <a href="#" className="hover:text-white hover:scale-110 transition-all"><Facebook size={32} /></a>
-                        <a href="#" className="hover:text-white hover:scale-110 transition-all"><Instagram size={32} /></a>
+                        <a href="https://www.linkedin.com/company/vr-agrico/" className="hover:text-white hover:scale-110 transition-all"><Linkedin size={32} /></a>
+                        <a href="https://www.facebook.com/share/17o94WJjj6/" className="hover:text-white hover:scale-110 transition-all"><Facebook size={32} /></a>
+                        <a href="https://www.instagram.com/vr_agrico?igsh=MTZ4MTJkZ21ibGpzNw==" className="hover:text-white hover:scale-110 transition-all"><Instagram size={32} /></a>
                     </div>
                 </div>
             </section>
         </div>
     );
 }
-

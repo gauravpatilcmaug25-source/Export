@@ -51,7 +51,7 @@ export default function Contact() {
                                 <div>
                                     <h4 className="font-bold text-slate-900 mb-1">Phone Number</h4>
                                     {/* Placeholder Phone */}
-                                    <p className="text-slate-600 text-sm">+91 90123 45678</p>
+                                    <p className="text-slate-600 text-sm">+91 9309358623</p>
                                 </div>
                             </div>
 
@@ -68,15 +68,15 @@ export default function Contact() {
 
                             <div className="flex gap-4 mt-4 justify-center lg:justify-start">
                                 {/* ADD FACEBOOK LINK HERE */}
-                                <a href="#" className="p-3 bg-slate-100 rounded-full hover:bg-green-600 hover:text-white transition-colors">
+                                <a href="https://www.facebook.com/share/17o94WJjj6/" className="p-3 bg-slate-100 rounded-full hover:bg-green-600 hover:text-white transition-colors">
                                     <Facebook size={20} />
                                 </a>
                                 {/* ADD INSTAGRAM LINK HERE */}
-                                <a href="#" className="p-3 bg-slate-100 rounded-full hover:bg-pink-600 hover:text-white transition-colors">
+                                <a href="https://www.instagram.com/vr_agrico?igsh=MTZ4MTJkZ21ibGpzNw==" className="p-3 bg-slate-100 rounded-full hover:bg-pink-600 hover:text-white transition-colors">
                                     <Instagram size={20} />
                                 </a>
                                 {/* ADD LINKEDIN LINK HERE */}
-                                <a href="#" className="p-3 bg-slate-100 rounded-full hover:bg-blue-600 hover:text-white transition-colors">
+                                <a href="https://www.linkedin.com/company/vr-agrico/" className="p-3 bg-slate-100 rounded-full hover:bg-blue-600 hover:text-white transition-colors">
                                     <Linkedin size={20} />
                                 </a>
                             </div>
