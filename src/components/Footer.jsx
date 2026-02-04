@@ -13,11 +13,26 @@ export default function Footer() {
                     <div className="space-y-4">
                         <Link to="/" className="flex items-center gap-2 text-white group">
                             <Leaf className="w-6 h-6 text-green-500 group-hover:text-green-400 transition-colors" />
-                            <span className="text-xl font-bold uppercase tracking-tight">VR AGRICO</span>
+                            <span className="text-xl font-bold uppercase tracking-tight">VR AGRICO LLP</span>
                         </Link>
                         <p className="text-slate-400 text-sm leading-relaxed">
                             Serving India's finest produce globally. Your trusted partner for Fruits, Vegetables, and Spices.
                         </p>
+
+                        <div className="pt-4 mt-4 border-t border-slate-800 space-y-3">
+                            <div>
+                                <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">LLP Identification Number</h6>
+                                <p className="text-xs font-medium text-green-400 tracking-wide">ACU-5142</p>
+                            </div>
+                            <div>
+                                <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Permanent Account Number (PAN)</h6>
+                                <p className="text-xs font-medium text-green-400 tracking-wide">ABBFV4918J</p>
+                            </div>
+                            <div>
+                                <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Tax Deduction Account Number (TAN)</h6>
+                                <p className="text-xs font-medium text-green-400 tracking-wide">NSKV08820A</p>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Column 2: Quick Links */}
@@ -70,6 +85,8 @@ export default function Footer() {
                     </div>
 
                 </div>
+
+
 
                 <div className="pt-6 border-t border-slate-800 text-center text-xs text-slate-600">
                     <p>&copy; {currentYear} VR AGRICO. All rights reserved.</p>
