@@ -24,14 +24,6 @@ export default function Footer() {
                                 <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">LLP Identification Number</h6>
                                 <p className="text-xs font-medium text-green-400 tracking-wide">ACU-5142</p>
                             </div>
-                            <div>
-                                <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Permanent Account Number (PAN)</h6>
-                                <p className="text-xs font-medium text-green-400 tracking-wide">ABBFV4918J</p>
-                            </div>
-                            <div>
-                                <h6 className="text-[10px] uppercase tracking-wider text-slate-500 mb-0.5">Tax Deduction Account Number (TAN)</h6>
-                                <p className="text-xs font-medium text-green-400 tracking-wide">NSKV08820A</p>
-                            </div>
                         </div>
                     </div>
 
